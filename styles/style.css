@@ -1,0 +1,127 @@
+/*!
+* style.css - https://github.com/minhpg/COS10026-Assignment-Project
+* Copyright (c) 2022 4A1A Group - COS10026
+*/
+
+/* description.css */
+p.description-hidden {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* timetable.css */
+
+.timetable th, td {
+  text-align: center;
+}
+
+.table:where(:not(.table-zebra))
+  :where(thead, tbody, tfoot)
+  :where(:where(th, td)) {
+  border-width: 1px;
+}
+
+.COS10026 {
+  background-color: #ff99cc;
+}
+
+.COS10009 {
+  background-color: #ccccff;
+}
+
+.COS10004 {
+  background-color: #00cccc;
+}
+
+.TNE10006 {
+  background-color: #cccc99;
+}
+
+/* table-fix.css */
+.table-no-border {
+  border: 0px;
+  border-bottom: 1px;
+}
+
+/* strikethrough.css */
+.strikethrough-title {
+  display: table;
+  white-space: nowrap;
+}
+.strikethrough-title:before,
+.strikethrough-title:after {
+  border-top: 1px solid grey;
+  content: "";
+  display: table-cell;
+  position: relative;
+  top: 0.5em;
+  width: 35%;
+}
+.strikethrough-title:before {
+  right: 1%;
+}
+.strikethrough-title:after {
+  left: 1%;
+}
+
+/* number-input.css */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* member.css */
+.member-img {
+    border: double 5px rgb(220 38 38 / var(--tw-bg-opacity)) !important;
+    border-radius: 1px;
+}
+
+.image-float-right {
+    float: right
+}
+
+/* hero.css */
+.hero-home {
+    background-image: url('/styles/images/hero/hero-home.jpeg');
+}
+
+.hero-menu {
+    background-image: url('/styles/images/hero/hero-menu.jpeg'); 
+}
+
+.hero-inquiry {
+    background-image: url('/styles/images/hero/stone-background.jpeg'); 
+}
+
+/* other fixes */
+h1.menu-section {
+  font-variant: initial;
+  font-size: 1.875rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight:900;
+}
+
+.navbar-main {
+  background-color: rgb(220 38 38);
+}
+
+.footer-main {
+  place-items: center;
+  text-align: center;
+}
+.footer-main > * {
+  place-items: center;
+}
+@media (min-width: 48rem) {
+  .footer-main {
+      grid-auto-flow: row dense;
+  }
+}
+
