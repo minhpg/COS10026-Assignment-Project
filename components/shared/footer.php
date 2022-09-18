@@ -1,9 +1,9 @@
 <?php include(__DIR__ . '/../../config.php') ?>
-<footer class="footer footer-main text-base-content p-10 bg-base-200 md:container md:mx-auto md:rounded-xl md:my-4 shadow">
+<footer class="footer text-base-content footer-center p-10 bg-base-200 md:container md:mx-auto md:rounded-xl md:my-4 shadow">
   <div>
     <p class="font-black text-xl"><?php echo $WEBSITE_NAME?></p>
 
-    <p class="copyright-text">Copyright © <?php echo date("Y"); ?> - All right reserved</p>
+    <p>Copyright © <?php echo date("Y"); ?> - All right reserved</p>
   </div> 
   <div>
     <div class="grid grid-flow-col gap-4">
