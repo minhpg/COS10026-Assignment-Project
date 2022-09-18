@@ -1,0 +1,19 @@
+.table:where(:not(.table-zebra)) :where(thead, tbody, tfoot) :where(:where(th, td)) {
+    border-width: 1px;
+}
+
+.COS10026 {
+    background-color: #FF99CC;
+}
+
+.COS10009 {
+    background-color: #CCCCFF;
+}
+
+.COS10004 {
+    background-color: #00CCCC;
+}
+
+.TNE10006 {
+    background-color: #CCCC99;
+}

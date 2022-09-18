@@ -1,0 +1,25 @@
+{
+  "name": "assignment-1-tailwind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minhpg/COS10026-Assignment-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minhpg/COS10026-Assignment-Project/issues"
+  },
+  "homepage": "https://github.com/minhpg/COS10026-Assignment-Project#readme",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.7",
+    "daisyui": "^2.27.0",
+    "tailwindcss": "^3.1.8"
+  }
+}
