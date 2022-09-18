@@ -37,14 +37,14 @@
 <table class="w-full table table-compact timetable" x-data="{ timetable, largest_span }">
     <tbody>
         <tr>
-            <th></th>
+            <th class="w-5 h-10"></th>
             <template x-for="i in largest_span">
-                <th colspan="1" x-html="timeConvert((i+(8*2))/2*60)" class="w-5 h-10"></th>
+                <th colspan="1" x-html="timeConvert((i+(8*2))/2*60)" class="w-5 h-10 bg-base-200"></th>
             </template>
         </tr>
         <template x-for="day in timetable">
             <tr>
-                <th x-html="day.day" class="w-10"></th>
+                <th x-html="day.day" class="w-10 bg-base-200"></th>
                 <template x-for="session in day.sessions">
                     <td x-show="session" :colspan="session.span/30" class="w-5 h-10" :class="session.course ? `${session.course}` : ''">
                         <p x-html="session.course ? session.course : ''" class="font-bold"></p>

@@ -111,6 +111,7 @@ $title = "Data Scientist";
 $student_id = "103808249";
 $course = "Computer Science";
 $phone = "+61426120408";
+$image_url = "/images/members/minhpg.jpg";
 $description = '<p>Currently studying Major of Data Science at Swinburne University of Technology.</p>
 <p>From Hanoi, Vietnam</p>
 <p>Favourite TV Series: Silicon Valley, Mr. Robot, HIMYM</p>

@@ -2,21 +2,23 @@
 <div class="modal">
     <div class="modal-box flex p-0 max-w-3xl overflow-clip">
         <aside class="hidden md:block">
-            <img class="h-full" src="<?php echo($pizza['image_detail'])?>" alt="pizza" />
+            <img class="h-full" src="<?php echo ($pizza['image_detail']) ?>" alt="pizza" />
         </aside>
         <div>
             <div class="h-full overflow-x-scroll p-4">
                 <div class="my-5">
                     <div class="flex justify-between">
-                        <h2 class="text-3xl font-black mb-2"><?php echo($pizza['name'])?></h2>
+                        <div>
+                            <h2 class="text-3xl font-black"><?php echo ($pizza['name']) ?></h2>
+                            <p class="font-light text-xs mb-3">Images and contents from <a href="https://www.pizzahut.com.au/menu/pizza/" target="_blank" class="underline">PizzaHut</a></p>
+                        </div>
                         <label for="<?php echo ($pizza['slug']) ?>" class="btn btn-ghost btn-round pb-5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </label>
                     </div>
-                    <p class="font-light text-xs ">Images and contents from <a href="https://www.pizzahut.com.au/menu/pizza/" target="_blank" class="underline">PizzaHut</a></p>
 
-                    <p class="font-light text-sm "><?php echo($pizza['description'])?></p>
+                    <p class="font-light text-sm "><?php echo ($pizza['description']) ?></p>
                 </div>
                 <hr>
                 <div class="my-5">

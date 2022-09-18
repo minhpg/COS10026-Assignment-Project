@@ -24,7 +24,28 @@
                 <option value="compliment">Compliment</option>
                 <option value="employment">Employment</option>
             </select>
-            </p>
+            <label for="reason">Reason</label>
+            <div class="flex gap-4 my-3">
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                        <span class="label-text mx-2">Quality of Service</span>
+                        <input type="checkbox" name="reason_qualityofservice" class="checkbox" value="qualityofservice" />
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                        <span class="label-text mx-2">Quality of Products</span>
+                        <input type="checkbox" name="reason_qualityofproduct" class="checkbox" value="qualityofproduct" />
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                        <span class="label-text mx-2">Others</span>
+                        <input type="checkbox" name="reason_others" class="checkbox" value="others" />
+                    </label>
+                </div>
+            </div>
+
             <label for="visitDate">Date of Visit: <b class="text-red-600">*</b></label>
             <input type="date" name="visitDate" id="visit-date" placeholder="Choose date" autocomplete="off" class="my-3 input w-full" required>
             <label for="comment">Comment:</label>
@@ -70,8 +91,29 @@
                     <input type="text" name="postcode" id="postcode" maxlength="4" pattern="\d{4}" placeholder="Enter postcode" autocomplete="off" class="my-3 input w-full" required>
                 </div>
             </div>
+            <label for="contactMethod">Prefered contact</label>
+            <div class="flex gap-4 my-3">
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                        <span class="label-text mx-2">Email</span>
+                        <input type="radio" name="contactMethod" class="radio" value="email" checked />
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                        <span class="label-text mx-2">Post</span>
+                        <input type="radio" name="contactMethod" class="radio" value="post" />
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                        <span class="label-text mx-2">Phone</span>
+                        <input type="radio" name="contactMethod" class="radio" value="phone" />
+                    </label>
+                </div>
+            </div>
             <div class="flex justify-between w-full text-sm mb-4">
-            <p> Required field.<b class="text-red-600">*</b></p>
+                <p> Required field.<b class="text-red-600">*</b></p>
                 <p>We'll never share your details with anyone else.</p>
             </div>
             <input type="submit" class="my-3 btn btn-ghost bg-red-600 text-white w-full lg:w-32"></input>

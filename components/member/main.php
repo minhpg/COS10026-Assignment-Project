@@ -1,10 +1,10 @@
-<?php include('members/minhpg.php') ?>
+<?php include('members/minhpg.php'); ?>
 <section>
     <div class="card bg-base-100 shadow h-full">
         <div class="card-body">
             <div>
                 <figure class="h-1/4 image-float-right">
-                    <img src="/images/members/minhpg.jpg" alt="member" class="w-48 sm:w-48 md:w-64 lg:w-72 member-img" />
+                    <img src="<?php echo $image_url; ?>" alt="member" class="w-48 sm:w-48 md:w-64 lg:w-72 member-img" />
                 </figure>
                 <div class="w-full">
                     <h2 class="card-title text-2xl">
