@@ -37,10 +37,13 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Orders</h6>
-                        <a class="collapse-item" href="orders.php?status=pending">Pending</a>
-                        <a class="collapse-item" href="orders.php?status=fulfilled">Fufilled</a>
-                        <a class="collapse-item" href="orders.php?status=paid">Paid</a>
-                        <a class="collapse-item" href="orders.php?status=archived">Archived</a>
+                        <a class="collapse-item" href="orders_status.php?order_status=pending">Pending</a>
+                        <a class="collapse-item" href="orders_status.php?order_status=fulfilled">Fufilled</a>
+                        <a class="collapse-item" href="orders_status.php?order_status=paid">Paid</a>
+                        <a class="collapse-item" href="orders_status.php?order_status=archived">Archived</a>
+                        <a class="collapse-item" href="orders_all.php">All orders</a>
+                        <a class="collapse-item" href="search_orders.php">Search</a>
+
                         <!-- <a class="collapse-item" href="search_order.php">Search order</a> -->
                     </div>
                 </div>

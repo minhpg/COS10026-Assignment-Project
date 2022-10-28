@@ -10,21 +10,10 @@
 <?php
 $order_schema = new Order();
 
-$query = '';
-$query_field = '';
-$order_by = '';
-$field_to_order = '';
-$order_status = '';
-
-$query = $_GET['query'];
-$query_field = $_GET['field'];
-$order_by = $_GET['order_by'];
-$field_to_order = $_GET['field_to_order'];
 $order_status = $_GET['order_status'];
 
+$orders = $order_schema->findByField('order_status', $order_status, ['*'],'order_timestamp');
 
-
-$orders = $order_schema->searchOrder($query_field, $query, $order_by, $field_to_order, $order_status);
 ?>
 
 <body id="page-top">

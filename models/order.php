@@ -38,6 +38,19 @@ class Order extends Model  {
     function sumOfMonth($month, $year){
         
     }
+
+    function searchOrder($query_field, $query, $order_by, $order_by_field, $order_status) {
+        // $query = $_GET['query'];
+        // $query_field = $_GET['field'];
+        // $order_by = $_GET['order_by'];
+        // $field_to_order = $_GET['field_to_order'];
+        // $order_status = $_GET['order_status'];
+
+        return $this->findLike([
+            $query_field => "%$query%",
+            'order_status' => $order_status,
+        ], ['*'], $order_by_field, $order_by);
+    }
 }
 ?>
 

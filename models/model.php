@@ -85,26 +85,48 @@ class Model {
         return $this->query($query);
     }
 
-    public function getAll($return_fields=['*']) {
+    public function getAll($return_fields=['*'], $order_by_field = 'id', $order_by = "DESC") {
         $select = join(',', $return_fields);
-        $query = "SELECT $select FROM $this->table ORDER BY id DESC";
+        $order_by_string = "ORDER BY $order_by_field $order_by";
+        $query = "SELECT $select FROM $this->table $order_by_string";
         return $this->query($query);
     }
 
-    public function find($fields, $return_fields=['*']){
+    public function find($fields, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){
         $select = join(',', $return_fields);
         $values = [];
         foreach($fields as $key=>$value){
             array_push($values, "$key = ".$this->conn->escapeData($value));
         }
         $values_string = join(', ', $values);
-        $query = "SELECT $select FROM $this->table WHERE ( $values_string ) ORDER BY id DESC";
+        $order_by_string = "ORDER BY $order_by_field $order_by";
+        $query = "SELECT $select FROM $this->table WHERE ( $values_string ) $order_by_string";
         return $this->query($query);
     }
 
-    public function findByField($field, $value, $return_fields=['*']){
+    public function findLike($fields, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){
         $select = join(',', $return_fields);
-        $query = "SELECT $select FROM $this->table WHERE $field = '$value' ORDER BY id DESC";
+        $values = [];
+        foreach($fields as $key=>$value){
+            array_push($values, "$key LIKE ".$this->conn->escapeData($value));
+        }
+        $values_string = join('AND ', $values);
+        $order_by_string = "ORDER BY $order_by_field $order_by";
+        $query = "SELECT $select FROM $this->table WHERE ( $values_string ) $order_by_string";
+        return $this->query($query);
+    }
+
+    public function findByField($field, $value, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){
+        $select = join(',', $return_fields);
+        $order_by_string = "ORDER BY $order_by_field $order_by";
+        $query = "SELECT $select FROM $this->table WHERE $field = '$value' $order_by_string";
+        return $this->query($query);
+    }
+
+    public function findByFieldLike($field, $value, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){
+        $select = join(',', $return_fields);
+        $order_by_string = "ORDER BY $order_by_field $order_by";
+        $query = "SELECT $select FROM $this->table WHERE $field LIKE '$value' $order_by_string";
         return $this->query($query);
     }
 
