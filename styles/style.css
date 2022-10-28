@@ -92,15 +92,15 @@ input[type="number"] {
 
 /* hero.css */
 .hero-home {
-    background-image: url('styles/images/hero/hero-home.jpeg');
+    background-image: url('./images/hero/hero-home.jpeg');
 }
 
 .hero-menu {
-    background-image: url('styles/images/hero/hero-menu.jpeg'); 
+    background-image: url('./images/hero/hero-menu.jpeg'); 
 }
 
 .hero-inquiry {
-    background-image: url('styles/images/hero/stone-background.jpeg'); 
+    background-image: url('./images/hero/stone-background.jpeg'); 
 }
 
 /* other fixes */

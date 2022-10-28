@@ -1,7 +1,7 @@
 <div class="my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
     <a class="card bg-base-100 shadow hover:shadow-xl transition ease-in-out delay-500" href="member.php?member=minhpg">
         <figure class="h-1/2">
-            <img src="/images/members/minhpg.jpg" alt="member-image" class="h-full" />
+            <img src="images/members/minhpg.jpg" alt="member-image" class="h-full" />
         </figure>
         <div class="card-body p-4 mt-3 flex flex-col justify-between">
             <div class="w-full">
@@ -17,7 +17,7 @@
     </a>
     <a class="card bg-base-100 shadow hover:shadow-xl transition ease-in-out delay-500" href="member.php?member=huy">
         <figure class="h-1/2">
-            <img src="/images/members/huy.jpg" alt="member-image" class="h-full" />
+            <img src="images/members/huy.jpg" alt="member-image" class="h-full" />
         </figure>
         <div class="card-body p-4 mt-3 flex flex-col justify-between">
             <div class="w-full">
@@ -33,7 +33,7 @@
     </a>
     <a class="card bg-base-100 shadow hover:shadow-xl transition ease-in-out delay-500" href="member.php?member=linhbao">
         <figure class="h-1/2">
-            <img src="/images/members/bao.jpg" alt="member-image" class="h-full" />
+            <img src="images/members/bao.jpg" alt="member-image" class="h-full" />
         </figure>
         <div class="card-body p-4 mt-3 flex flex-col justify-between">
             <div class="w-full">
@@ -49,7 +49,7 @@
     </a>
     <a class="card bg-base-100 shadow hover:shadow-xl transition ease-in-out delay-500" href="member.php?member=huuti">
         <figure class="h-1/2">
-            <img src="/images/members/huuti.jpg" alt="member-image" class="h-full" />
+            <img src="images/members/huuti.jpg" alt="member-image" class="h-full" />
         </figure>
         <div class="card-body p-4 mt-3 flex flex-col justify-between">
             <div class="w-full">
@@ -65,7 +65,7 @@
     </a>
     <a class="card bg-base-100 shadow hover:shadow-xl transition ease-in-out delay-500" href="member.php?member=alister">
         <figure class="h-1/2">
-            <img src="/images/members/alister.jpg" alt="member-image" class="h-full" />
+            <img src="images/members/alister.jpg" alt="member-image" class="h-full" />
         </figure>
         <div class="card-body p-4 mt-3 flex flex-col justify-between">
             <div class="w-full">

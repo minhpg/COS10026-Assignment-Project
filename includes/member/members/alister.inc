@@ -3,7 +3,7 @@ $name = "Alister Klarica";
 $title = "Data Scientist";
 $student_id = "104004035";
 $course = "Computer Science";
-$image_url = "/images/members/alister.jpg";
+$image_url = "images/members/alister.jpg";
 $phone = "+61423514051";
 $description = "<p>I'm Alister Klarica, I grew up in Australia, in an area with lots of trees and an unused train track.</p>
 <p> I spend most of my free time playing League Of Legends, and my favourite movie is Scream.</p>";

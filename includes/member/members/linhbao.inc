@@ -3,7 +3,7 @@ $name = "Nguyen Linh Bao Nguyen";
 $title = "Software Developer";
 $student_id = "103842645";
 $course = "Computer Science";
-$image_url = "/images/members/bao.jpg";
+$image_url = "images/members/bao.jpg";
 $phone = "+61424395642";
 $description = '
 <p>Honour awards: <i>rank 9th in competitive programming contest</i></p>

@@ -128,7 +128,7 @@ class ValidateOrder {
     }
     
     private function validateStreetAddress() {
-        $pattern = "/^([a-zA-Z' ]+)$/";
+        $pattern = "/^[a-zA-Z0-9 .\-]+$/i";
         $field = "street_address";
         $this->validateStringRegex($field, $pattern);
     }
@@ -310,7 +310,7 @@ else {
     }
     else {
         // echo json_encode($validation->data);
-        header('location: fix_order.php?data='.base64_encode(json_encode($validation->data))); // redirect to fix_order page
+        header('location: fix_order.php?data='.base64_encode(json_encode($validation->data))); // redirect to fix page
     }
 }
 

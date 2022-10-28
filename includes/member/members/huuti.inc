@@ -4,7 +4,7 @@ $title = "Software Developer";
 $student_id = "10410363";
 $course = "Computer Science";
 $phone = "+61424297762";
-$image_url = "/images/members/huuti.jpg";
+$image_url = "images/members/huuti.jpg";
 $description = '<p>Currently studying Software Development at Swinburne University of Technology.</p>
 <p>From Da Nang, Vietnam</p>
 <p>Love playing team-orientated and fast pace games</p>

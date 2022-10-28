@@ -79,13 +79,13 @@
                             echo '<tr><td colspan="2" class="font-weight-bold">Additional Ingredients</td></tr>';
                             foreach ($options['ingredients'] as $ingredient) {
                                 if ($ingredient['value'] > 1) {
-                                    echo '<td>' . $ingredient['name'] . ' <span class="italic">x ' . $ingredient['value'] . '</span></td><td> +' . floatToDollar($ingredient['price'] * ($ingredient['value'] - 1)) . '</td>';
+                                    echo '<tr><td>' . $ingredient['name'] . ' <span class="italic">x ' . $ingredient['value'] . '</span></td><td> +' . floatToDollar($ingredient['price'] * ($ingredient['value'] - 1)) . '</td></tr>';
                                 }
                             }
                             echo '<tr><td colspan="2" class="font-weight-bold">Additional Toppings</td></tr>';
                             foreach ($options['toppings'] as $topping) {
                                 if ($topping['value'] > 0) {
-                                    echo '<td>' . $topping['name'] . ' <span class="italic">x ' . $topping['value'] . '</span></td><td> +' . floatToDollar($topping['price'] * ($topping['value'])) . '</td>';
+                                    echo '<tr><td>' . $topping['name'] . ' <span class="italic">x ' . $topping['value'] . '</span></td><td> +' . floatToDollar($topping['price'] * ($topping['value'])) . '</td></tr>';
                                 }
                             }
                             echo '

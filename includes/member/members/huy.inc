@@ -3,7 +3,7 @@ $name = "Nguyen Quang Huy Pham";
 $title = "Cybersecurity";
 $student_id = "103826322";
 $course = "Computer Science";
-$image_url = "/images/members/huy.jpg";
+$image_url = "images/members/huy.jpg";
 $phone = "+61434177988";
 $description = '<p>Hey, I’m Huy but people here call me Bill. I grew up in Vietnam, and lived there before I study aboard in Australia.</p>
 <p>I speak Vietnamese and English. I love gaming, and I play Fifa 19 almost every day with my friends.</p>
