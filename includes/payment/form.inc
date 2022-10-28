@@ -156,7 +156,8 @@ $current_year = $now->format('Y');
                         <option selected disabled value>Select year</option>
                         <?php
                         for ($i; $i < 5; $i++) {
-                            echo '<option value="' . $current_year + $i . '">' . $current_year + $i . '</option>';
+                            $year = $current_year + $i;
+                            echo '<option value="' . $year . '">' . $year . '</option>';
                         }
                         ?>
                     </select>

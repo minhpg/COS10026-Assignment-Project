@@ -1,13 +1,14 @@
 <meta charset="UTF-8">
 <title>4A1A Pizza - <?php echo $title?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/styles/tailwind.css"/>
-<link rel="stylesheet" href="/styles/style.css"/>
+<link rel="stylesheet" href="styles/tailwind.css"/>
+<link rel="stylesheet" href="styles/style.css"/>
 <script defer src="js/alpine.js"></script>
 <script defer src="js/cart.js"></script>
 <script defer src="js/creditcard.js"></script>
 <?php 
     include('settings.php');
+    include(__DIR__.'/../../password.php');
     include(__DIR__.'/../../db.php');
     include(__DIR__.'/../../models/model.php');
     include(__DIR__.'/../../models/product.php');

@@ -159,7 +159,7 @@ class ValidateOrder {
     }
 
     private function validatePostcode() {
-        $pattern = "/^\d{4}$/";
+        $pattern = "/^(0[289][0-9]{2})|([1-9][0-9]{3})$/";
         $field = "postcode";
         $this->validateStringRegex($field, $pattern);
     }

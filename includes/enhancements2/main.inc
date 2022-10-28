@@ -47,6 +47,9 @@
             $hashed_password = password_hash($password, PASSWORD_DEFAULT );
         </code>
     </p>
+    <p>
+        Due to Mercury using PHP5, an external library (by Anthony Ferrara), is used to allow compatibility (<code>password.php</code>)
+    </p>
     <h2>Shopping cart</h2>
     <p>
         Visitors can now buy multiple items at once, by implementing a shopping cart. This is done by creating a <code>carts</code> and a <code>cart_items</code> table, where the <code>cart_items</code> table can be queried to find all rows with matching <code>cart_id</code> field, thus returning all items that belongs in the cart.
@@ -62,4 +65,6 @@
     </code></p>
     <p>which returns e.g.<code>a81e9377-bb4c-4dba-b2e5-1163d3b38dd0</code></p>
     <p>Session is also used to implement login in the Management Dashboard.</p>
+    <h2>Storing products data in the Database</h2>
+    <p>All product data is stored inside the <code>products</code> table. All product content on the site is rendered from database queries.</p>
 </div>

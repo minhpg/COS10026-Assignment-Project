@@ -1,7 +1,6 @@
 <?php 
-include('../../../db.php');
-include('../../../models/model.php');
-include('../../../models/order.php');
+include('import.php');
+
 
 if(!$_POST) header('location: ../../index.php');
 $id = $_POST['order_id'];

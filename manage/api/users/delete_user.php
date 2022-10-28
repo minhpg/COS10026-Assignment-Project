@@ -1,7 +1,7 @@
 <?php 
-include('../../../db.php');
-include('../../../models/model.php');
-include('../../../models/users.php');
+
+include('imports.php');
+
 
 $id = $_GET['user_id'];
 $user_schema = new User();

@@ -17,6 +17,7 @@
 include('settings.php');
 include(__DIR__ . '../../../../settings.php');
 include(__DIR__ . '../..//../../db.php');
+include(__DIR__ . '../..//../../password.php');
 include(__DIR__ . '../../../../models/model.php');
 include(__DIR__ . '../../../../models/product.php');
 include(__DIR__ . '../../../../models/enquiry.php');

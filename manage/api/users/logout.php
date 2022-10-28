@@ -1,8 +1,6 @@
 <?php 
-include('../../settings.php');
-include('../../../db.php');
-include('../../../models/model.php');
-include('../../../models/users.php');
+include('imports.php');
+
 
 $users_schema = new User();
 

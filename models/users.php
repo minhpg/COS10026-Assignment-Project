@@ -1,8 +1,18 @@
 <?php 
+function random_bytes($length = 6)
+    {
+        $characters = '0123456789';
+        $characters_length = strlen($characters);
+        $output = '';
+        for ($i = 0; $i < $length; $i++)
+            $output .= $characters[rand(0, $characters_length - 1)];
 
-function GUIDV4($data = null) {
+        return $output;
+    }
+    
+function GUIDV4() {
     // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
-    $data = $data ?? random_bytes(16);
+    $data = random_bytes(16);
     assert(strlen($data) == 16);
 
     // Set version to 0100
@@ -13,6 +23,8 @@ function GUIDV4($data = null) {
     // Output the 36 character UUID.
     return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
 }
+
+
 
 
 class User extends Model  {
@@ -102,6 +114,3 @@ class User extends Model  {
 //     $productSchema->insertOne($pizza);
 // }
 // $results = $productSchema->getByField('taxonomy','pizza.personalpan');
-
-?>
-

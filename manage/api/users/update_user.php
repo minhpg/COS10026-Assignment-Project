@@ -1,7 +1,5 @@
 <?php 
-include('../../../db.php');
-include('../../../models/model.php');
-include('../../../models/users.php');
+include('imports.php');
 
 if(!$_POST) header('location: ../../index.php');
 $name = $_POST['name'];
