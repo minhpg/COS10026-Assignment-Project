@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="input-password">Password (min. 8 characters, 1 letter and 1 number)</label>
-                                    <input type="password" name="password" class="form-control" id="input-password" placeholder="Password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                                    <input type="password" name="password" class="form-control" id="input-password" placeholder="Password" pattern="[0-9a-zA-Z\s]*">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

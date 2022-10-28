@@ -1,5 +1,5 @@
 <?php 
-include('import.php');
+include('imports.php');
 
 
 if(!$_POST) header('location: ../../index.php');

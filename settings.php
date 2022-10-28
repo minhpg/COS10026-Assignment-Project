@@ -6,7 +6,7 @@ $SESSION_NAME = "SESSION_NAME"; // variable for setting/retrieving session cooki
 // MySQL Connection
 $MYSQL_HOST = "feenix-mariadb.swin.edu.au";
 // $MYSQL_HOST = "localhost";
-$MYSQL_USER = "s103808249";
-$MYSQL_PWD = "040804";
+$MYSQL_USER = "";
+$MYSQL_PWD = "";
 $MYSQL_DB = "s103808249_db";
 ?>
