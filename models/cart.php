@@ -12,7 +12,7 @@ class Cart extends Model  {
         parent::__construct($table, $schema, $unique_fields);
     }
 
-    public function createCart($session_id) {
+    public function createCart($session_id) { // create cart with Session id
         $id = $this->insertOne([
             "session_id" => $session_id,
             "checked_out" => false,
@@ -20,7 +20,7 @@ class Cart extends Model  {
         return $this->findById($id);
     }
 
-    public function findCart($session_id) {
+    public function findCart($session_id) { // find cart with Session id
         $carts = $this->findByField('session_id', $session_id);
         if(count($carts) > 0){
             return $carts[0];
@@ -28,14 +28,14 @@ class Cart extends Model  {
         return;
     }
     
-    public function checkoutCart($cart_id) {
+    public function checkoutCart($cart_id) { // checkout cart
         $this->updateOne($cart_id, [
             'checked_out' => true
         ]);
         return;
     }
 
-    public function deleteCart($cart_id){
+    public function deleteCart($cart_id){ // delete cart
         $this->deleteById($cart_id);
         $items_schema = new CartItem();
         $items = $items_schema->findItems($cart_id);
@@ -61,7 +61,7 @@ class CartItem extends Model  {
         parent::__construct($table, $schema, $unique_fields);
     }
 
-    private function calculateTotalPriceOptions($options_json)
+    private function calculateTotalPriceOptions($options_json) // calculate price from options
     {
       $total = 0;
       
@@ -79,7 +79,7 @@ class CartItem extends Model  {
       return $total;
     }
 
-    public function createItem($cart_id, $product_id, $options) {
+    public function createItem($cart_id, $product_id, $options) { // create new cart item
         $product_schema = new Product();
         $product = $product_schema->findById($product_id, ['price', 'name'])[0];
         $product_price = $product['price'];
@@ -94,7 +94,7 @@ class CartItem extends Model  {
         ]);
     }
 
-    public function findItems($cart_id) {
+    public function findItems($cart_id) { // get cart items
         $items = $this->findByField('cart_id', $cart_id);
         if(count($items) > 0){
             return $items;
@@ -102,7 +102,7 @@ class CartItem extends Model  {
         return;
     }
 
-    public function deleteItem($item_id) {
+    public function deleteItem($item_id) { // delete cart item
         return $this->deleteById($item_id);
     }
 }

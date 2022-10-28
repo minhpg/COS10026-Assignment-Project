@@ -1,5 +1,6 @@
 <?php 
-function random_bytes($length = 6)
+
+function random_bytes($length = 6) // compatibility - introduced in PHP 7
     {
         $characters = '0123456789';
         $characters_length = strlen($characters);
@@ -45,62 +46,62 @@ class User extends Model  {
         parent::__construct($table, $schema, $unique_fields);
     }
 
-    public function getCurrentSession($session_token){
+    public function getCurrentSession($session_token){ // get user from session token
         $user = $this->findByField('session_token', $session_token);
         if(!$user) return;
         return $user[0];
     }
 
-    public function createUser($name, $username, $password){
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT );
+    public function createUser($name, $username, $password){ // create management user
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT ); // hash password
         $id = $this->insertOne([
             'name' => $name,
             'username' => $username,
             'password' => $hashed_password
-        ]);
-        return $this->findById($id)[0];
+        ]); // insert to database
+        return $this->findById($id)[0]; // return user
     }
 
-    public function updateUser($name, $username, $password){
-        $user = $this->findByField('username', $username);
+    public function updateUser($name, $username, $password){ // update management user
+        $user = $this->findByField('username', $username); // find user with matching username
         if(!$user) return false;
         $user = $user[0];
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT );
-        $this->updateOne($user['id'], [
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT ); // hash password
+        $this->updateOne($user['id'], [ 
             'name' => $name,
             'username' => $username,
             'password' => $hashed_password
-        ]);
+        ]); // save to database
         return true;
     }
 
-    public function authenticateUser($username, $password){
-        $user = $this->findByField('username', $username);
+    public function authenticateUser($username, $password){ // authenticate management user
+        $user = $this->findByField('username', $username); // find user with matching username
         if(!$user) return false;
         $user = $user[0];
         $hashed_password = $user['password'];
-        $session_token = GUIDV4();
-        if ( password_verify ( $password , $hashed_password )) {
-           if ( password_needs_rehash($hashed_password , PASSWORD_DEFAULT)) {
-              $rehashed_password = password_hash($password, PASSWORD_DEFAULT );
-              $this->updateOne($user['id'], [
+        $session_token = GUIDV4(); // create session token
+        if ( password_verify ( $password , $hashed_password )) { // verify password against hash
+           if ( password_needs_rehash($hashed_password , PASSWORD_DEFAULT)) { // future-proofing - checks if PHP updates hashing method
+              $rehashed_password = password_hash($password, PASSWORD_DEFAULT ); // rehash password
+              $this->updateOne($user['id'], [ 
                 'password' => $rehashed_password,
                 'session_token' => $session_token
-              ]);
+              ]); // save to database
             }
             else {
                 $this->updateOne($user['id'], [
                     'session_token' => $session_token
-                  ]);  
+                  ]);  // save to database
             }
-            return $session_token;
+            return $session_token; // return token
         }
         else {
             return false;
         }
     }
 
-    public function logoutSession($session_token){
+    public function logoutSession($session_token){ // logout current user
         $user = $this->findByField('session_token', $session_token);
         if(!$user) return;
         $user = $user[0];
@@ -109,8 +110,3 @@ class User extends Model  {
         ]);
     }
 }
-// $productSchema = new Product();
-// foreach($pizzas as $pizza){
-//     $productSchema->insertOne($pizza);
-// }
-// $results = $productSchema->getByField('taxonomy','pizza.personalpan');

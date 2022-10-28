@@ -24,11 +24,5 @@ class Enquiry extends Model  {
         parent::__construct($table, $schema, $unique_fields);
     }
 }
-// $productSchema = new Product();
-// foreach($pizzas as $pizza){
-//     $productSchema->insertOne($pizza);
-// }
-// $results = $productSchema->getByField('taxonomy','pizza.personalpan');
-
 ?>
 

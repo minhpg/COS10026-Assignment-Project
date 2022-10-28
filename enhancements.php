@@ -14,6 +14,7 @@
     <div class="drawer-content">
       <div class="mx-auto container">
         <?php include('./includes/shared/navbar.inc') ?>
+        <?php include('./includes/enhancements/main.inc') ?>
         <?php include('./includes/shared/footer.inc') ?>
 
       </div>

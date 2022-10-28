@@ -1,4 +1,5 @@
 <?php 
+    // imports
     include('settings.php');
     include('db.php');
     include('password.php');
@@ -7,7 +8,8 @@
     include('models/product.php');
 ?>
 
-<?php
+<?php 
+// products data
 $pizzas = [
     [
     "name" => "Veggie Sensation Personal Pan",
@@ -444,17 +446,18 @@ $pizzas = [
 ?>
 
 <?php 
+// insert products data
 $productSchema = new Product();
 foreach($pizzas as $pizza){
     $productSchema->insertOne($pizza);
 }
 
+// insert admin user
 $user_schema = new User();
-
 $user_schema->createUser(
-    'Minh Pham',
-    'minhpg',
-    '1234'
+    'COS10026',
+    'admin',
+    'password'
 )
 
 ?>

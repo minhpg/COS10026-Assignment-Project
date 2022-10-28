@@ -28,20 +28,20 @@ class Model {
         $this->unique_fields = $unique_fields;
         $this->table = $table;
         $this->schema = $schema;
-        $this->conn = new Database();
-        $this->conn->connect();
-        $table_exists = $this->checkTableExists();
+        $this->conn = new Database(); // initialize database class
+        $this->conn->connect(); // initialize database connection
+        $table_exists = $this->checkTableExists(); // check table exists
         if(!$table_exists) {
-            $this->initialiseTable();
+            $this->initialiseTable(); // create table if not exists
         }
     }
 
     public function query($query) {
-        return $this->conn->query($query);
+        return $this->conn->query($query); // run query
     }
 
     protected function checkTableExists(){
-        $query = "SHOW tables LIKE '$this->table'";
+        $query = "SHOW tables LIKE '$this->table'"; // query to check if table exists
         $results = $this->query($query);
         return $results;
     }
@@ -49,15 +49,15 @@ class Model {
     protected function initialiseTable(){
         $unique_fields = '';
         if(count($this->unique_fields) > 0){
-            $unique_fields = ", UNIQUE (".join(', ', $this->unique_fields).")";
+            $unique_fields = ", UNIQUE (".join(', ', $this->unique_fields).")"; // concatenate unique fields array -> string
         }
-        $schema_query = $this->arraySchemaToQuery($this->schema);
+        $schema_query = $this->arraySchemaToQuery($this->schema); // create schema from array of fields->datatypes (see sample schema above)
         $query = "CREATE TABLE $this->table (
                     id int NOT NULL AUTO_INCREMENT,
                     PRIMARY KEY (id),
                     $schema_query
                     $unique_fields
-                )";
+                )"; // create table
         return $this->query($query);
     }
 
@@ -79,20 +79,21 @@ class Model {
         return $string;
     }
 
-    public function findById($id, $return_fields=['*']) {
+    public function findById($id, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC") { // find row with id
         $select = join(',', $return_fields);
-        $query = "SELECT $select FROM $this->table WHERE id = $id ORDER BY id DESC";
+        $order_by_string = "ORDER BY $order_by_field $order_by";
+        $query = "SELECT $select FROM $this->table WHERE id = $id $order_by_string";
         return $this->query($query);
     }
 
-    public function getAll($return_fields=['*'], $order_by_field = 'id', $order_by = "DESC") {
+    public function getAll($return_fields=['*'], $order_by_field = 'id', $order_by = "DESC") { // get all rows
         $select = join(',', $return_fields);
         $order_by_string = "ORDER BY $order_by_field $order_by";
         $query = "SELECT $select FROM $this->table $order_by_string";
         return $this->query($query);
     }
 
-    public function find($fields, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){
+    public function find($fields, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){ // find row with matching fields
         $select = join(',', $return_fields);
         $values = [];
         foreach($fields as $key=>$value){
@@ -104,7 +105,7 @@ class Model {
         return $this->query($query);
     }
 
-    public function findLike($fields, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){
+    public function findLike($fields, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){ // find rows with matching fields using LIKE 
         $select = join(',', $return_fields);
         $values = [];
         foreach($fields as $key=>$value){
@@ -116,21 +117,21 @@ class Model {
         return $this->query($query);
     }
 
-    public function findByField($field, $value, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){
+    public function findByField($field, $value, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){ // find rows with matching field 
         $select = join(',', $return_fields);
         $order_by_string = "ORDER BY $order_by_field $order_by";
         $query = "SELECT $select FROM $this->table WHERE $field = '$value' $order_by_string";
         return $this->query($query);
     }
 
-    public function findByFieldLike($field, $value, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){
+    public function findByFieldLike($field, $value, $return_fields=['*'], $order_by_field = 'id', $order_by = "DESC"){ // find rows with matching field using LIKE
         $select = join(',', $return_fields);
         $order_by_string = "ORDER BY $order_by_field $order_by";
         $query = "SELECT $select FROM $this->table WHERE $field LIKE '$value' $order_by_string";
         return $this->query($query);
     }
 
-    public function delete($fields){
+    public function delete($fields){ // delete rows with matching fields
         $values = [];
         foreach($fields as $key=>$value){
             array_push($values, "$key = ".$this->conn->escapeData($value));
@@ -140,17 +141,17 @@ class Model {
         return $this->query($query);
     }
 
-    public function deleteById($id) {
+    public function deleteById($id) { //  delete row with id
         $query = "DELETE FROM $this->table WHERE id = $id";
         return $this->query($query);
     }
 
-    public function deleteByField($field, $value){
+    public function deleteByField($field, $value){ // delete rows with matching field 
         $query = "DELETE FROM $this->table WHERE $field = '$value'";
         return $this->query($query);
     }
 
-    public function insertOne($fields) {
+    public function insertOne($fields) { // insert row
         $query = $this->parseFieldsInsert($fields);
         $this->query($query);
         return $this->conn->lastInsertedId();
@@ -170,7 +171,7 @@ class Model {
         return $query;
     }
 
-    public function updateOne($id, $fields) {
+    public function updateOne($id, $fields) { // update row
         $query = $this->parseFieldUpdate($id, $fields);
         return $this->query($query);
     }

@@ -1,4 +1,6 @@
 <?php 
+
+// imports 
 require('db.php');
 require('models/model.php');
 require('models/order.php');
@@ -10,12 +12,11 @@ class ValidateOrder {
 
     function __construct($post_data)
     {   
-        $this->date_now = new DateTime('now');
-        $this->order_schema = new Order();
+        $this->date_now = new DateTime('now'); // get current date time
+        $this->order_schema = new Order(); // initialise Order model
         $this->post_data = $post_data;
-        echo(json_encode($_POST));
         $this->cart_id = $post_data['cart_id'];
-        $this->data = [
+        $this->data = [ // fields which needs to be validated
             "notes" => [
                 "validated" => false,
                 "value" => null
@@ -80,7 +81,7 @@ class ValidateOrder {
     }
 
 
-    private function validateStringRegex($field, $pattern) {
+    private function validateStringRegex($field, $pattern) { // function for validating input against regex pattern
         if(!isset($this->post_data[$field])) return;
         $name = $this->post_data[$field];
         if (!preg_match($pattern, $name)) return;
@@ -88,7 +89,7 @@ class ValidateOrder {
         $this->data[$field]['value'] = $name;
     }
 
-    private function validateAgainstArray($field, $array){
+    private function validateAgainstArray($field, $array){ // function for validating input against array of accepted inputs
         if(!isset($this->post_data[$field])) return;
         $field_value = $this->post_data[$field];
         if(!in_array($field_value, $array )) return;
@@ -178,26 +179,26 @@ class ValidateOrder {
 
         $card_number = $this->post_data[$field_number];
         $card_number = str_replace(' ', '', $card_number);
-        $cart_types = array(
+        $card_types = array( // matching card number against 4 types of credit card types
             "visa"       => "/^4[0-9]{12}(?:[0-9]{3})?$/",
             "mastercard" => "/^5[1-5][0-9]{14}$/",
             "amex"       => "/^3[47][0-9]{13}$/",
             "discover"   => "/^6(?:011|5[0-9]{2})[0-9]{12}$/",
         );
     
-        if (preg_match($cart_types['visa'], $card_number))
+        if (preg_match($card_types['visa'], $card_number))
         {
             $type = "visa";
         }
-        else if (preg_match($cart_types['mastercard'], $card_number))
+        else if (preg_match($card_types['mastercard'], $card_number))
         {
             $type = "mastercard";
         }
-        else if (preg_match($cart_types['amex'], $card_number))
+        else if (preg_match($card_types['amex'], $card_number))
         {
             $type = "amex";
         }
-        else if (preg_match($cart_types['discover'], $card_number))
+        else if (preg_match($card_types['discover'], $card_number))
         {
             $type = "discover";
         }
@@ -298,19 +299,18 @@ $enquiry_validated = false;
 $enquiry_error = [];
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST' or !$_POST){
-    header('location: index.php');
+    header('location: index.php'); // redirect if not POST method or no POST data
 }
 else {
     $validation = new ValidateOrder($_POST);
-    $enquiry_validated = $validation->validate();
+    $enquiry_validated = $validation->validate(); // validate POST fields
     if($enquiry_validated) {
-        $order_id = $validation->saveOrder();
-        
-        header('location: receipt.php?order_id='.$order_id);
+        $order_id = $validation->saveOrder(); // save order to database
+        header('location: receipt.php?order_id='.$order_id); // redirect to receipt page
     }
     else {
         // echo json_encode($validation->data);
-        header('location: fix_order.php?data='.base64_encode(json_encode($validation->data)));
+        header('location: fix_order.php?data='.base64_encode(json_encode($validation->data))); // redirect to fix_order page
     }
 }
 
