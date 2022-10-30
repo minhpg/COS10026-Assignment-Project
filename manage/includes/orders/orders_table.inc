@@ -28,6 +28,13 @@
         </tfoot>
         <tbody>
             <?php
+            function checkIfPending($status){
+                if($status != 'pending'){
+                    return 'btn-disabled';
+                }
+                return '';
+
+            }
             foreach ($orders as $order) {
                 echo "
                     <tr>
@@ -39,7 +46,7 @@
                         <td class='text-capitalize'>
                         " . $order['order_status'] . "
                         </td>
-                        <td><a class='btn btn-danger w-100' href='api/orders/delete_order.php?order_id={$order['id']}'><i class='fas fa-xmark'></i></a></td>
+                        <td><a class='btn btn-danger w-100 ".checkIfPending($order['order_status'])."' href='api/orders/delete_order.php?order_id={$order['id']}'><i class='fas fa-xmark'></i></a></td>
                         <td><a href='edit_order.php?order_id={$order['id']}'>Edit order</a></td>
                     </tr>
                     ";

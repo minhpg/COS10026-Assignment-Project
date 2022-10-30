@@ -1,5 +1,4 @@
 <?php 
-class Model {
 
     /* Sample schema:
 
@@ -20,6 +19,7 @@ class Model {
         ]
         
     */
+class Model {
 
     private $table, $conn, $schema, $unique_fields;
 
