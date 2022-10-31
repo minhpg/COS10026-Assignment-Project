@@ -35,8 +35,6 @@ class User extends Model  {
             "name" => "varchar(255) NOT NULL",
             "username" => "varchar(255) NOT NULL UNIQUE",
             "password" => "varchar(255) NOT NULL",
-            // "email" => "varchar(255) NOT NULL",
-            // "mobile_number" => "varchar(255) NOT NULL",
             "session_token" => "varchar(255)"
         ];
         $unique_fields = [

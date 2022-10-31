@@ -7,7 +7,7 @@ require('models/order.php');
 require('models/cart.php');
 
 class ValidateOrder {
-    private  $post_data, $order_schema, $date_now;
+    private $post_data, $order_schema, $date_now;
     public $data, $validated, $insert_data;
 
     function __construct($post_data)
