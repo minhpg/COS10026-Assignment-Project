@@ -175,13 +175,14 @@ $current_year = $now->format('Y');
         </div>
         <label for="submit"></label>
         <input type="hidden" name="cart_id" class="hidden" value="<?php echo $current_cart['id'] ?>">
-        <input type="submit" id="submit" class="my-3 btn btn-ghost text-white w-full lg:w-32 <?php
-                                                                                                if ($cart_items == null) {
-                                                                                                    echo 'btn-disabled';
-                                                                                                } else {
-                                                                                                    echo 'bg-red-600';
-                                                                                                }
-                                                                                                ?>" value="Check out" />
+        <input type="submit" id="submit" class="my-3 btn btn-ghost text-white w-full lg:w-32 
+        <?php
+            if ($cart_items == null) {
+                echo 'btn-disabled';
+            } else {
+                echo 'bg-red-600';
+            }
+            ?>" value="Check out" />
     </form>
 </div>
 <!-- END FORM -->

@@ -3,7 +3,6 @@
 <footer class="footer footer-main text-base-content p-10 bg-base-200 md:container md:mx-auto md:rounded-xl md:my-4 shadow">
   <div>
     <p class="font-black text-xl"><?php echo $WEBSITE_NAME?></p>
-
     <p class="copyright-text">Copyright © <?php echo date("Y"); ?> - All right reserved</p>
   </div> 
   <div>

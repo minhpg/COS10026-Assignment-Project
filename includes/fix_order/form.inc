@@ -1,29 +1,32 @@
 <!-- START FORM -->
 <?php
-if(!isset($_GET)){
+if (!isset($_GET)) {
     header('location: index.php');
 }
-if(!isset($_GET['data'])){
+if (!isset($_GET['data'])) {
     header('location: index.php');
 }
 
 $data = json_decode(base64_decode($_GET['data']), true);
 
 
-$states = ["VIC",
-"NSW",
-"QLD",
-"NT",
-"WA",
-"SA",
-"TAS",
-"ACT"];
+$states = [
+    "VIC",
+    "NSW",
+    "QLD",
+    "NT",
+    "WA",
+    "SA",
+    "TAS",
+    "ACT"
+];
 
 $total_price = 0;
 
-function highlightIfError($field){
+function highlightIfError($field)
+{
     global $data;
-    if($data[$field]['validated']) echo '';
+    if ($data[$field]['validated']) echo '';
     else echo 'text-red-600';
 }
 
@@ -107,65 +110,66 @@ $current_year = $now->format('Y');
     </ul>
     <form class="mx-0 md:mx-20 mt-10 mb-5 font-light" method="post" novalidate="novalidate" action="process_order.php">
         <p class="italic my-5 font-bold text-red-600">Please fix highlighted fields!</p>
-        <label for="notes" class="<?php highlightIfError('notes')?>">Notes:</label>
-        <textarea name="notes" id="notes" class="my-3 textarea w-full h-20" placeholder="Notes"><?php echo $data['notes']['value']?></textarea>
+        <label for="notes" class="<?php highlightIfError('notes') ?>">Notes:</label>
+        <textarea name="notes" id="notes" class="my-3 textarea w-full h-20" placeholder="Notes"><?php echo $data['notes']['value'] ?></textarea>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
-                <label for="first-name" class="<?php highlightIfError('first_name')?>">First name: <b class="text-red-600">*</b></label>
-                <input type="text" name="first_name" id="first-name" maxlength="25" pattern="[a-zA-Z\s]*" placeholder="Enter first name" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['first_name']['value']?>">
+                <label for="first-name" class="<?php highlightIfError('first_name') ?>">First name: <b class="text-red-600">*</b></label>
+                <input type="text" name="first_name" id="first-name" maxlength="25" pattern="[a-zA-Z\s]*" placeholder="Enter first name" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['first_name']['value'] ?>">
             </div>
             <div>
-                <label for="last-name" class="<?php highlightIfError('last_name')?>">Last name: <b class="text-red-600">*</b></label>
-                <input type="text" name="last_name" id="last-name" maxlength="25" pattern="[a-zA-Z\s]*" placeholder="Enter last name" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['last_name']['value']?>">
+                <label for="last-name" class="<?php highlightIfError('last_name') ?>">Last name: <b class="text-red-600">*</b></label>
+                <input type="text" name="last_name" id="last-name" maxlength="25" pattern="[a-zA-Z\s]*" placeholder="Enter last name" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['last_name']['value'] ?>">
             </div>
         </div>
-        <label for="mobile-number" class="<?php highlightIfError('mobile_number')?>">Mobile Number: <b class="text-red-600">*</b></label>
-        <input type="text" name="mobile_number" id="mobile-number" maxlength="10" pattern="\d{10}" placeholder="Enter mobile number" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['mobile_number']['value']?>">
-        <label for="email-address" class="<?php highlightIfError('email')?>">Email Address: <b class="text-red-600">*</b></label>
-        <input type="email" name="email" id="email-address" placeholder="Enter email address" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['email']['value']?>">
+        <label for="mobile-number" class="<?php highlightIfError('mobile_number') ?>">Mobile Number: <b class="text-red-600">*</b></label>
+        <input type="text" name="mobile_number" id="mobile-number" maxlength="10" pattern="\d{10}" placeholder="Enter mobile number" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['mobile_number']['value'] ?>">
+        <label for="email-address" class="<?php highlightIfError('email') ?>">Email Address: <b class="text-red-600">*</b></label>
+        <input type="email" name="email" id="email-address" placeholder="Enter email address" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['email']['value'] ?>">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 my-3">
             <div>
-                <label for="street-address" class="<?php highlightIfError('street_address')?>">Street address: <b class="text-red-600">*</b></label>
-                <input type="text" name="street_address" id="street-address" maxlength="40" pattern="[0-9a-zA-Z\s]*" placeholder="Enter street address" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['street_address']['value']?>">
+                <label for="street-address" class="<?php highlightIfError('street_address') ?>">Street address: <b class="text-red-600">*</b></label>
+                <input type="text" name="street_address" id="street-address" maxlength="40" pattern="[0-9a-zA-Z\s]*" placeholder="Enter street address" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['street_address']['value'] ?>">
             </div>
             <div>
-                <label for="suburb" class="<?php highlightIfError('suburb')?>">Suburb: <b class="text-red-600">*</b></label>
-                <input type="text" name="suburb" id="suburb" maxlength="20" pattern="[a-zA-Z\s]*" placeholder="Enter suburb" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['suburb']['value']?>">
+                <label for="suburb" class="<?php highlightIfError('suburb') ?>">Suburb: <b class="text-red-600">*</b></label>
+                <input type="text" name="suburb" id="suburb" maxlength="20" pattern="[a-zA-Z\s]*" placeholder="Enter suburb" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['suburb']['value'] ?>">
             </div>
             <div>
-                <label for="state" class="<?php highlightIfError('state')?>">State: <b class="text-red-600">*</b></label>
+                <label for="state" class="<?php highlightIfError('state') ?>">State: <b class="text-red-600">*</b></label>
                 <select name="state" id="state" class="my-3 select w-full font-light" required>
                     <option selected disabled value>Select one</option>
-                    <?php 
-                    function ifStateSelected($state){
+                    <?php
+                    function ifStateSelected($state)
+                    {
                         global $data;
-                        if($state == $data['state']['value']){
+                        if ($state == $data['state']['value']) {
                             return 'selected';
                         }
                         return '';
                     }
-                    foreach($states as $state) {
-                        echo '<option value="'.$state.'" '.ifStateSelected($state).'>'.$state.'</option>';
-                    }?>
+                    foreach ($states as $state) {
+                        echo '<option value="' . $state . '" ' . ifStateSelected($state) . '>' . $state . '</option>';
+                    } ?>
 
                 </select>
             </div>
             <div>
-                <label for="postcode" class="<?php highlightIfError('postcode')?>">Postcode: <b class="text-red-600">*</b></label>
-                <input type="text" name="postcode" id="postcode" maxlength="4" pattern="\d{4}" placeholder="Enter postcode" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['postcode']['value']?>">
+                <label for="postcode" class="<?php highlightIfError('postcode') ?>">Postcode: <b class="text-red-600">*</b></label>
+                <input type="text" name="postcode" id="postcode" maxlength="4" pattern="\d{4}" placeholder="Enter postcode" autocomplete="off" class="my-3 input w-full" required value="<?php echo $data['postcode']['value'] ?>">
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 my-3">
             <div>
-                <label for="card-holder" class="<?php highlightIfError('card_holder')?>">Card holder: <b class="text-red-600">*</b></label>
+                <label for="card-holder" class="<?php highlightIfError('card_holder') ?>">Card holder: <b class="text-red-600">*</b></label>
                 <input type="text" name="card_holder" id="card-holder" maxlength="40" pattern="[0-9a-zA-Z\s]*" placeholder="Enter card holder's name" autocomplete="off" class="my-3 input w-full" required>
             </div>
             <div>
-                <label for="card_number" class="<?php highlightIfError('card_number')?>">Card number: <b class="text-red-600">*</b></label>
+                <label for="card_number" class="<?php highlightIfError('card_number') ?>">Card number: <b class="text-red-600">*</b></label>
                 <input type="text" name="card_number" id="card-number" placeholder="xxxx xxxx xxxx xxxx" autocomplete="off" class="my-3 input w-full" required>
             </div>
             <div>
-                <label for="expiry" class="<?php highlightIfError('card_expiry_month')?>">Expiry: <b class="text-red-600">*</b></label>
+                <label for="expiry" class="<?php highlightIfError('card_expiry_month') ?>">Expiry: <b class="text-red-600">*</b></label>
                 <div class="grid grid-cols-2 gap-4">
 
                     <select name="card_expiry_month" id="expiry-month" class="my-3 select w-full font-light" required>
@@ -196,7 +200,7 @@ $current_year = $now->format('Y');
 
             </div>
             <div>
-                <label for="cvv" class="<?php highlightIfError('card_cvv')?>">CVV: <b class="text-red-600">*</b></label>
+                <label for="cvv" class="<?php highlightIfError('card_cvv') ?>">CVV: <b class="text-red-600">*</b></label>
                 <input type="password" name="card_cvv" id="card_cvv" maxlength="3" pattern="\d{4}" placeholder="Enter security code" autocomplete="off" class="my-3 input w-full" required>
             </div>
         </div>
@@ -208,12 +212,12 @@ $current_year = $now->format('Y');
         <input type="hidden" name="cart_id" class="hidden" value="<?php echo $current_cart['id'] ?>">
         <input type="submit" id="submit" class="my-3 btn btn-ghost text-white w-full lg:w-32 
         <?php
-            if ($cart_items == null) {
-                echo 'btn-disabled';
-            } else {
-                echo 'bg-red-600';
-            }
-            ?>" value="Check out" />
+        if ($cart_items == null) {
+            echo 'btn-disabled';
+        } else {
+            echo 'bg-red-600';
+        }
+        ?>" value="Check out" />
     </form>
 </div>
 <!-- END FORM -->

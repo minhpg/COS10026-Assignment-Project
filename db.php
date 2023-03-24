@@ -11,7 +11,7 @@ function printBrowserConsole( $object=null, $label=null ){
 
 // database connection class
 
-class Database{
+class Database {
         private $host, $user, $pwd, $db, $connection;
 
         function __construct() {
